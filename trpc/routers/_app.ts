@@ -8,9 +8,13 @@ export const appRouter = createTRPCRouter({
         text: z.string()
       })
     )
-    .query((opts) => ({
-      greeting: `hello ${opts.input.text}`
-    }))
+    .query(async (opts) => {
+      console.log(await opts.ctx.db.word.findMany());
+
+      return {
+        greeting: `Hello ${opts.input.text}`
+      };
+    })
 });
 // export type definition of API
 export type AppRouter = typeof appRouter;
