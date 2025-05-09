@@ -1,19 +1,18 @@
-import { initTRPC } from '@trpc/server';
-import superjson from 'superjson';
+import { initTRPC } from "@trpc/server";
+import superjson from "superjson";
 
-import { db } from '@/server/db';
+import { db } from "@/server/db";
 
 // eslint-disable-next-line @typescript-eslint/require-await
-export const createTRPCContext = async (opts: { headers: Headers }) => ({
-  db,
-  ...opts
+export const createTRPCContext = async () => ({
+	db,
 });
 
 const t = initTRPC.context<typeof createTRPCContext>().create({
-  /**
-   * @see https://trpc.io/docs/server/data-transformers
-   */
-  transformer: superjson
+	/**
+	 * @see https://trpc.io/docs/server/data-transformers
+	 */
+	transformer: superjson,
 });
 
 export const createTRPCRouter = t.router;

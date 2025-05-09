@@ -17,7 +17,6 @@
     "@trpc/server": "^11.1.2",
     "@trpc/tanstack-react-query": "^11.1.2",
     "client-only": "^0.0.1",
-    "eslint-config-wesbos": "^4.3.2",
     "next": "15.3.2",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
@@ -26,6 +25,7 @@
     "zod": "^3.24.4"
   },
   "devDependencies": {
+    "@biomejs/biome": "1.9.4",
     "@eslint/eslintrc": "^3",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",

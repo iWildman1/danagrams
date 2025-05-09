@@ -17,10 +17,10 @@
     - `[x]` Install and configure Prisma (or your chosen ORM).
     - `[ ]` Define initial Prisma schema for:
       - `[ ]` `User` (`id`, `username`, `hashedPassword`, `dailyNudgesRemaining`, `lastPlayedDate`)
-      - `[ ]` `Word` (`id`, `originalWord`, `anagram`)
-      - `[ ]` `DailyAssignment` (`id`, `date` (UNIQUE), `wordId`)
+      - `[x]` `Word` (`id`, `originalWord`, `anagram`)
+      - `[x]` `DailyAssignment` (`id`, `date` (UNIQUE), `wordId`)
       - `[ ]` `UserAttempt` (`id`, `userId`, `dailyAssignmentId`, `guesses` (array), `score`, `completed`)
-    - `[ ]` Run initial migration to create tables.
+    - `[x]` Run initial migration to create tables.
 
 3.  `[ ]` **User & Word Seeding Scripts**
     - `[ ]` Create `scripts/seedUsers.ts`:
