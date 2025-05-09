@@ -4,8 +4,8 @@
 
 1.  `[ ]` **Project Initialization & Basic Structure (NextJS)**
 
-    - `[ ]` Strip out TanStack Start attempt (keep the styleguide somewhere)
-    - `[ ]` Initialize a new NextJS project.
+    - `[x]` Strip out TanStack Start attempt (keep the styleguide somewhere)
+    - `[x]` Initialize a new NextJS project.
     - `[ ]` Initialize and configure tRPC
     - `[ ]` Set up basic project structure (folders for `routes`, `components`, `server/trpc`, `lib`, etc.).
     - `[ ]` Initialize Git repository.
