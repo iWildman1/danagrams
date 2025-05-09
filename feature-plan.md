@@ -2,9 +2,10 @@
 
 **Phase 1: Foundation & Core Setup**
 
-1.  `[ ]` **Project Initialization & Basic Structure (Tanstack Start)**
+1.  `[ ]` **Project Initialization & Basic Structure (NextJS)**
 
-    - `[x]` Initialize a new Tanstack Start project.
+    - `[ ]` Strip out TanStack Start attempt (keep the styleguide somewhere)
+    - `[ ]` Initialize a new NextJS project.
     - `[ ]` Initialize and configure tRPC
     - `[ ]` Set up basic project structure (folders for `routes`, `components`, `server/trpc`, `lib`, etc.).
     - `[ ]` Initialize Git repository.
