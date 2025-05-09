@@ -1,16 +1,15 @@
 import { initTRPC } from '@trpc/server';
-import { cache } from 'react';
 import superjson from 'superjson';
 
-// eslint-disable-next-line @typescript-eslint/require-await
-export const createTRPCContext = cache(async () =>
-  /**
-   * @see: https://trpc.io/docs/server/context
-   */
-  ({ userId: 'user_123' })
-);
+import { db } from '@/server/db';
 
-const t = initTRPC.create({
+// eslint-disable-next-line @typescript-eslint/require-await
+export const createTRPCContext = async (opts: { headers: Headers }) => ({
+  db,
+  ...opts
+});
+
+const t = initTRPC.context<typeof createTRPCContext>().create({
   /**
    * @see https://trpc.io/docs/server/data-transformers
    */

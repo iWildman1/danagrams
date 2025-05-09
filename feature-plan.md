@@ -2,19 +2,19 @@
 
 **Phase 1: Foundation & Core Setup**
 
-1.  `[ ]` **Project Initialization & Basic Structure (NextJS)**
+1.  `[x]` **Project Initialization & Basic Structure (NextJS)**
 
     - `[x]` Strip out TanStack Start attempt (keep the styleguide somewhere)
     - `[x]` Initialize a new NextJS project.
     - `[x]` Initialize and configure tRPC
     - `[x]` Set up basic project structure (folders for `routes`, `components`, `server/trpc`, `lib`, etc.).
     - `[x]` Initialize Git repository.
-    - `[ ]` Basic ESLint, Prettier, TypeScript configuration.
+    - `[x]` Basic ESLint, Prettier, TypeScript configuration.
 
 2.  `[ ]` **Database & ORM Setup**
 
-    - `[ ]` Choose and set up a database (e.g., PostgreSQL, SQLite for local dev).
-    - `[ ]` Install and configure Prisma (or your chosen ORM).
+    - `[x]` Choose and set up a database (e.g., PostgreSQL, SQLite for local dev).
+    - `[x]` Install and configure Prisma (or your chosen ORM).
     - `[ ]` Define initial Prisma schema for:
       - `[ ]` `User` (`id`, `username`, `hashedPassword`, `dailyNudgesRemaining`, `lastPlayedDate`)
       - `[ ]` `Word` (`id`, `originalWord`, `anagram`)
