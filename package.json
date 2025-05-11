@@ -8,9 +8,11 @@
     "start": "next start",
     "lint": "next lint",
     "lint:fix": "eslint . --fix",
-    "seed:users": "tsx ./scripts/seed-users"
+    "seed:users": "tsx ./scripts/seed-users",
+    "seed:words": "tsx ./scripts/seed-words"
   },
   "dependencies": {
+    "@faker-js/faker": "^9.7.0",
     "@prisma/client": "^6.7.0",
     "@tanstack/react-query": "^5.75.7",
     "@trpc/client": "^11.1.2",

@@ -11,7 +11,7 @@
     - `[x]` Initialize Git repository.
     - `[x]` Basic ESLint, Prettier, TypeScript configuration.
 
-2.  `[ ]` **Database & ORM Setup**
+2.  `[x]` **Database & ORM Setup**
 
     - `[x]` Choose and set up a database (e.g., PostgreSQL, SQLite for local dev).
     - `[x]` Install and configure Prisma (or your chosen ORM).
@@ -22,16 +22,16 @@
       - `[x]` `UserAttempt` (`id`, `userId`, `dailyAssignmentId`, `guesses` (array), `score`, `completed`)
     - `[x]` Run initial migration to create tables.
 
-3.  `[ ]` **User & Word Seeding Scripts**
+3.  `[x]` **User & Word Seeding Scripts**
     - `[x]` Create `scripts/seedUsers.ts`:
       - `[x]` Takes predefined credentials.
       - `[x]` Hashes passwords.
       - `[x]` Inserts the two users into the `User` table.
-    - `[ ]` Create `scripts/seedWords.ts`:
-      - `[ ]` Defines a list of original words.
-      - `[ ]` Implements a basic anagram generation function.
-      - `[ ]` Populates the `Word` table with `originalWord` and generated `anagram`.
-    - `[ ]` Add npm scripts to run these seeders (e.g., `npm run seed:users`, `npm run seed:words`).
+    - `[x]` Create `scripts/seedWords.ts`:
+      - `[x]` Defines a list of original words.
+      - `[x]` Implements a basic anagram generation function.
+      - `[x]` Populates the `Word` table with `originalWord` and generated `anagram`.
+    - `[x]` Add npm scripts to run these seeders (e.g., `npm run seed:users`, `npm run seed:words`).
 
 **Phase 2: Authentication**
 
