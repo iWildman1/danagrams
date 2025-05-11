@@ -15,18 +15,18 @@
 
     - `[x]` Choose and set up a database (e.g., PostgreSQL, SQLite for local dev).
     - `[x]` Install and configure Prisma (or your chosen ORM).
-    - `[ ]` Define initial Prisma schema for:
-      - `[ ]` `User` (`id`, `username`, `hashedPassword`, `dailyNudgesRemaining`, `lastPlayedDate`)
+    - `[x]` Define initial Prisma schema for:
+      - `[x]` `User` (`id`, `username`, `hashedPassword`, `dailyNudgesRemaining`, `lastPlayedDate`)
       - `[x]` `Word` (`id`, `originalWord`, `anagram`)
       - `[x]` `DailyAssignment` (`id`, `date` (UNIQUE), `wordId`)
-      - `[ ]` `UserAttempt` (`id`, `userId`, `dailyAssignmentId`, `guesses` (array), `score`, `completed`)
+      - `[x]` `UserAttempt` (`id`, `userId`, `dailyAssignmentId`, `guesses` (array), `score`, `completed`)
     - `[x]` Run initial migration to create tables.
 
 3.  `[ ]` **User & Word Seeding Scripts**
-    - `[ ]` Create `scripts/seedUsers.ts`:
-      - `[ ]` Takes predefined credentials.
-      - `[ ]` Hashes passwords.
-      - `[ ]` Inserts the two users into the `User` table.
+    - `[x]` Create `scripts/seedUsers.ts`:
+      - `[x]` Takes predefined credentials.
+      - `[x]` Hashes passwords.
+      - `[x]` Inserts the two users into the `User` table.
     - `[ ]` Create `scripts/seedWords.ts`:
       - `[ ]` Defines a list of original words.
       - `[ ]` Implements a basic anagram generation function.
