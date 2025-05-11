@@ -16,16 +16,17 @@ model Word {
 }
 
 model DailyAssignment {
-  id     String   @id @default(cuid())
-  date   DateTime @unique
-  word   Word     @relation(fields: [wordId], references: [id])
-  wordId String
+  id       String        @id @default(cuid())
+  date     DateTime      @unique
+  word     Word          @relation(fields: [wordId], references: [id])
+  wordId   String
+  attempts UserAttempt[]
 
   @@index([wordId])
 }
 
 model User {
-  id            String    @id
+  id            String        @id
   name          String
   email         String
   emailVerified Boolean
@@ -34,6 +35,7 @@ model User {
   updatedAt     DateTime
   sessions      Session[]
   accounts      Account[]
+  attempts      UserAttempt[]
 
   @@unique([email])
   @@map("user")
@@ -82,4 +84,19 @@ model Verification {
   updatedAt  DateTime?
 
   @@map("verification")
+}
+
+model UserAttempt {
+  id                String          @id @default(cuid())
+  user              User            @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId            String
+  dailyAssignment   DailyAssignment @relation(fields: [dailyAssignmentId], references: [id], onDelete: Cascade)
+  dailyAssignmentId String
+  guess             String
+  score             Int             @default(0)
+  createdAt         DateTime        @default(now())
+  updatedAt         DateTime        @updatedAt
+
+  @@index([userId])
+  @@index([dailyAssignmentId])
 }

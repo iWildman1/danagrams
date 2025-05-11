@@ -37,11 +37,11 @@
 
 4.  `[ ]` **Authentication System (Backend & Frontend)**
     - **Backend (tRPC `authRouter`):**
-      - `[ ]` Integrate chosen auth library (e.g., Better Auth, NextAuth.js).
-      - `[ ]` Configure auth strategy (username/password, credentials provider).
-      - `[ ]` Create `login(username, password)`: Handles password hashing/comparison, session creation.
-      - `[ ]` Create `getSession()`: Retrieves current user session.
-      - `[ ]` Create `logout()`: Invalidates session.
+      - `[x]` Integrate chosen auth library (e.g., Better Auth, NextAuth.js).
+      - `[x]` Configure auth strategy (username/password, credentials provider).
+      - `[x]` Create `login(username, password)`: Handles password hashing/comparison, session creation.
+      - `[x]` Create `getSession()`: Retrieves current user session.
+      - `[x]` Create `logout()`: Invalidates session.
       - `[ ]` Set up tRPC context to include user session.
       - `[ ]` Protect tRPC procedures that require authentication.
     - **Frontend (Login Page):**
