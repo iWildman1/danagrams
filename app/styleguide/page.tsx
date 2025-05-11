@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { Input } from "@/components/Input";
 import { Button } from "@/components/Button";
+import { Loader } from "@/components/Loader";
 
 // Define the color palette for easy reference and consistency
 const colors = {
@@ -44,7 +45,7 @@ function RouteComponent() {
 	}, []);
 
 	return (
-			<div className={`${colors.textPrimary} min-h-screen p-4 sm:p-8`}>
+		<div className={`${colors.textPrimary} min-h-screen p-4 sm:p-8`}>
 			<style>
 				{`
             /* Custom scrollbar for a more pixelated feel - optional */
@@ -62,29 +63,6 @@ function RouteComponent() {
             }
             ::-webkit-scrollbar-thumb:hover {
               background: ${tailwindColors.lime[700]};
-            }
-  
-            /* Pixel Pulse Loader Animation */
-            .pixel-loader-dot {
-              width: 20px;
-              height: 20px;
-              margin: 4px;
-              border: 2px solid ${colors.shadowColorJs};
-              animation: pulse 1.5s infinite ease-in-out;
-            }
-            .pixel-loader-dot:nth-child(1) { animation-delay: -0.30s; }
-            .pixel-loader-dot:nth-child(2) { animation-delay: -0.15s; }
-            .pixel-loader-dot:nth-child(3) { animation-delay: 0s; }
-  
-            @keyframes pulse {
-              0%, 80%, 100% {
-                transform: scale(0.8);
-                opacity: 0.5;
-              }
-              40% {
-                transform: scale(1);
-                opacity: 1;
-              }
             }
           `}
 			</style>
@@ -260,7 +238,7 @@ function RouteComponent() {
 					</div>
 				</section>
 
-				{/* Loading Indicator Section - NEW */}
+				{/* Loading Indicator Section */}
 				<section>
 					<h2
 						className={`text-4xl sm:text-5xl ${colors.textPrimary} border-b-4 ${colors.borderPrimary} pb-2 mb-6`}
@@ -270,13 +248,8 @@ function RouteComponent() {
 					<div
 						className={`p-6 ${colors.inputBackground} border-4 ${colors.borderPrimary} shadow-[6px_6px_0px_theme(colors.stone.800)] text-center`}
 					>
-						<h3 className="text-2xl mb-4">Fetching today's Danagram...</h3>
 						{isLoading ? (
-							<div className="flex justify-center items-center my-6">
-								<div className={`pixel-loader-dot ${colors.loaderDotBg}`}></div>
-								<div className={`pixel-loader-dot ${colors.loaderDotBg}`}></div>
-								<div className={`pixel-loader-dot ${colors.loaderDotBg}`}></div>
-							</div>
+							<Loader text="Fetching today's Danagram..." />
 						) : (
 							<p className="text-xl text-lime-700">Danagram Loaded!</p>
 						)}
