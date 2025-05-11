@@ -1,18 +1,22 @@
-import { initTRPC } from "@trpc/server";
-import superjson from "superjson";
-
 import { headers } from "next/headers";
-
+import superjson from "superjson";
+import { initTRPC, TRPCError } from "@trpc/server";
 import { db } from "@/server/db";
+import { auth } from "@/utils/auth";
 
 // eslint-disable-next-line @typescript-eslint/require-await
 export const createTRPCContext = async () => {
-	const h = await headers();
+	const internalHeaders = await headers();
 
-	console.log(h.forEach((v, k) => console.log(k, v)));
+	const formattedHeaders = new Headers(internalHeaders);
+
+	const session = await auth.api.getSession({
+		headers: formattedHeaders,
+	});
 
 	return {
 		db,
+		session,
 	};
 };
 
@@ -25,4 +29,13 @@ const t = initTRPC.context<typeof createTRPCContext>().create({
 
 export const createTRPCRouter = t.router;
 export const { createCallerFactory } = t;
+
 export const baseProcedure = t.procedure;
+
+export const protectedProcedure = t.procedure.use(async ({ ctx, next }) => {
+	if (!ctx.session) {
+		throw new TRPCError({ code: "UNAUTHORIZED" });
+	}
+
+	return next();
+});

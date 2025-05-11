@@ -42,8 +42,8 @@
       - `[x]` Create `login(username, password)`: Handles password hashing/comparison, session creation.
       - `[x]` Create `getSession()`: Retrieves current user session.
       - `[x]` Create `logout()`: Invalidates session.
-      - `[ ]` Set up tRPC context to include user session.
-      - `[ ]` Protect tRPC procedures that require authentication.
+      - `[x]` Set up tRPC context to include user session.
+      - `[x]` Protect tRPC procedures that require authentication.
     - **Frontend (Login Page):**
       - `[ ]` Create Login page/route (`/login`).
       - `[ ]` Build UI form for username and password.
