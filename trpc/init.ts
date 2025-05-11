@@ -4,7 +4,6 @@ import { initTRPC, TRPCError } from "@trpc/server";
 import { db } from "@/server/db";
 import { auth } from "@/utils/auth";
 
-// eslint-disable-next-line @typescript-eslint/require-await
 export const createTRPCContext = async () => {
 	const internalHeaders = await headers();
 
