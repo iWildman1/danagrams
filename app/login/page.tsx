@@ -1,59 +1,26 @@
-import { Button } from "@/components/Button";
-import { Input } from "@/components/Input";
+import { headers } from "next/headers";
+import { redirect } from "next/navigation";
 import { LargeLogo } from "@/components/LargeLogo";
+import { auth } from "@/utils/auth";
+import { LoginForm } from "./login-form";
 
-export default function LoginPage() {
+export default async function LoginPage() {
+	const heads = await headers();
+
+	const session = await auth.api.getSession({
+		headers: heads,
+	});
+
+	if (session) {
+		redirect("/");
+	}
+
 	return (
 		<main className="container mx-auto max-w-xl px-4 py-8">
 			<div className="mb-12 border-stone-800">
 				<LargeLogo />
 			</div>
-
-			<form className="space-y-6">
-				<div>
-					<label
-						htmlFor="username"
-						className="mb-2 block text-stone-800 text-xl sm:text-2xl"
-					>
-						Username
-					</label>
-					<Input
-						type="text"
-						id="username"
-						placeholder="Enter your username"
-						required
-					/>
-				</div>
-
-				<div>
-					<label
-						htmlFor="password"
-						className="mb-2 block text-stone-800 text-xl sm:text-2xl"
-					>
-						Password
-					</label>
-					<Input
-						type="password"
-						id="password"
-						placeholder="Enter your password"
-						required
-					/>
-					<div className="mt-2">
-						<a
-							href="/forgot-password"
-							className="text-lg text-stone-600 hover:text-stone-800"
-						>
-							Forgot password?
-						</a>
-					</div>
-				</div>
-
-				<div className="pt-4">
-					<Button type="submit" variant="primary" size="full">
-						Login
-					</Button>
-				</div>
-			</form>
+			<LoginForm />
 		</main>
 	);
 }

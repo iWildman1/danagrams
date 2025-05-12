@@ -1,11 +1,18 @@
-import { getQueryClient, trpc } from "@/trpc/server";
+import { headers } from "next/headers";
+import { redirect } from "next/navigation";
+
+import { auth } from "@/utils/auth";
 
 export default async function Home() {
-	const queryClient = getQueryClient();
+	const heads = await headers();
 
-	const hello = await queryClient.fetchQuery(
-		trpc.hello.queryOptions({ text: "world" }),
-	);
+	const session = await auth.api.getSession({
+		headers: heads,
+	});
 
-	return <div>{JSON.stringify(hello, null, 2)}</div>;
+	if (!session) {
+		redirect("/login");
+	}
+
+	return <div>logged in as {session.user.email}</div>;
 }
