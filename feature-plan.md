@@ -45,7 +45,7 @@
       - `[x]` Set up tRPC context to include user session.
       - `[x]` Protect tRPC procedures that require authentication.
     - **Frontend (Login Page):**
-      - `[ ]` Create Login page/route (`/login`).
+      - `[x]` Create Login page/route (`/login`).
       - `[ ]` Build UI form for username and password.
       - `[ ]` Use tRPC client to call `authRouter.login`.
       - `[ ]` On successful login, redirect to Game Page (or Leaderboard if already completed).
