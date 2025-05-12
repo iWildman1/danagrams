@@ -46,11 +46,11 @@
       - `[x]` Protect tRPC procedures that require authentication.
     - **Frontend (Login Page):**
       - `[x]` Create Login page/route (`/login`).
-      - `[ ]` Build UI form for username and password.
-      - `[ ]` Use tRPC client to call `authRouter.login`.
-      - `[ ]` On successful login, redirect to Game Page (or Leaderboard if already completed).
-      - `[ ]` Handle login errors.
-      - `[ ]` Implement basic protected routes using session state from `authRouter.getSession`.
+      - `[x]` Build UI form for username and password.
+      - `[x]` Use tRPC client to call `authRouter.login`.
+      - `[x]` On successful login, redirect to Game Page (or Leaderboard if already completed).
+      - `[x]` Handle login errors.
+      - `[x]` Implement basic protected routes using session state from `authRouter.getSession`.
 
 **Phase 3: Core Game Page & Logic**
 

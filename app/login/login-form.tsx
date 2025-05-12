@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
+import { toast } from "sonner";
 import { Button } from "@/components/Button";
 import { Input } from "@/components/Input";
 import { authClient } from "@/utils/auth-client";
@@ -16,7 +17,7 @@ const loginSchema = z.object({
 export function LoginForm() {
 	const router = useRouter();
 
-	const { register, handleSubmit } = useForm({
+	const { register, handleSubmit, formState } = useForm({
 		resolver: zodResolver(loginSchema),
 	});
 
@@ -31,7 +32,7 @@ export function LoginForm() {
 					router.push("/");
 				},
 				onError() {
-					alert("Login failed");
+					toast.error("Invalid username or password");
 				},
 			},
 		);
@@ -80,7 +81,12 @@ export function LoginForm() {
 			</div>
 
 			<div className="pt-4">
-				<Button type="submit" variant="primary" size="full">
+				<Button
+					type="submit"
+					variant="primary"
+					size="full"
+					disabled={formState.isSubmitting}
+				>
 					Login
 				</Button>
 			</div>
