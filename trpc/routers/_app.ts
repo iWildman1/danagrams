@@ -1,20 +1,9 @@
-import { z } from "zod";
-import { baseProcedure, createTRPCRouter } from "../init";
+import { createTRPCRouter } from "../init";
+import { danagramRouter } from "./danagram";
 
 export const appRouter = createTRPCRouter({
-	hello: baseProcedure
-		.input(
-			z.object({
-				text: z.string(),
-			}),
-		)
-		.query(async (opts) => {
-			console.log(await opts.ctx.db.word.findMany());
-
-			return {
-				greeting: `Hello ${opts.input.text}`,
-			};
-		}),
+	danagram: danagramRouter,
 });
+
 // export type definition of API
 export type AppRouter = typeof appRouter;

@@ -35,7 +35,7 @@
 
 **Phase 2: Authentication**
 
-4.  `[ ]` **Authentication System (Backend & Frontend)**
+4.  `[x]` **Authentication System (Backend & Frontend)**
     - **Backend (tRPC `authRouter`):**
       - `[x]` Integrate chosen auth library (e.g., Better Auth, NextAuth.js).
       - `[x]` Configure auth strategy (username/password, credentials provider).
@@ -56,7 +56,7 @@
 
 5.  `[ ]` **Game Page & Core Danagram Logic (Backend & Frontend)**
     - **Backend (tRPC `danagramRouter` - Part 1):**
-      - `[ ]` Create `danagramRouter`.
+      - `[x]` Create `danagramRouter`.
       - `[ ]` Implement `getDailyState` procedure:
         - `[ ]` Determine current UTC date.
         - `[ ]` Check `DailyAssignment` for today's entry; if none, select a new `Word`, create `DailyAssignment` (unique date), and assign.
