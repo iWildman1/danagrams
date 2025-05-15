@@ -7,7 +7,13 @@ function makeAnagram(word: string) {
 		const j = Math.floor(Math.random() * (i + 1));
 		[chars[i], chars[j]] = [chars[j], chars[i]];
 	}
-	return chars.join("");
+	const scrambled = chars.join("");
+
+	if (scrambled === word) {
+		return makeAnagram(word);
+	}
+
+	return scrambled;
 }
 
 export async function seedWords() {
