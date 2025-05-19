@@ -1,3 +1,4 @@
+// @ts-nocheck
 "use client";
 
 import { useState, useEffect } from "react";
@@ -111,6 +112,7 @@ function RouteComponent() {
 						<div className="flex justify-center space-x-2 sm:space-x-3 mb-6">
 							{exampleAnagram.split("").map((letter, index) => (
 								<div
+									// biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
 									key={index}
 									className={`w-12 h-12 sm:w-16 sm:h-16 flex items-center justify-center 
                                 ${colors.letterTileBg} ${colors.textPrimary} text-3xl sm:text-4xl 

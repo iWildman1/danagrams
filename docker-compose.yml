@@ -1,0 +1,15 @@
+services:
+  danagrams:
+    container_name: danagrams
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: always
+    ports:
+      - 3000:3000
+    env_file:
+      - .env
+    volumes:
+      - ./prisma/dev.db:/app/data/dev.db
+    environment:
+      - DATABASE_URL=file:/app/data/dev.db
