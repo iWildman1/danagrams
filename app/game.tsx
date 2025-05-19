@@ -46,15 +46,20 @@ export default function Game() {
 					{hasCompletedToday ? "Today's Danagram:" : "Unscramble the letters:"}
 				</p>
 				<div className="mb-6 flex justify-center space-x-2 sm:space-x-3">
-					{gameState.data.anagram.split("").map((letter, index) => (
-						<div
-							// biome-ignore lint/suspicious/noArrayIndexKey: We aren't reodering, this is fine
-							key={index}
-							className="flex h-12 w-12 items-center justify-center border-4 border-slate-400 bg-slate-50 text-3xl text-stone-800 shadow-[3px_3px_0px_theme(colors.stone.800)] sm:h-16 sm:w-16 sm:text-4xl"
-						>
-							{letter.toUpperCase()}
-						</div>
-					))}
+					{(hasCompletedToday && gameState.data.solution
+						? gameState.data.solution
+						: gameState.data.anagram
+					)
+						.split("")
+						.map((letter, index) => (
+							<div
+								// biome-ignore lint/suspicious/noArrayIndexKey: We aren't reodering, this is fine
+								key={index}
+								className="flex h-12 w-12 items-center justify-center border-4 border-slate-400 bg-slate-50 text-3xl text-stone-800 shadow-[3px_3px_0px_theme(colors.stone.800)] sm:h-16 sm:w-16 sm:text-4xl"
+							>
+								{letter.toUpperCase()}
+							</div>
+						))}
 				</div>
 				{hasCompletedToday ? (
 					<div className="text-center">
