@@ -61,6 +61,10 @@ export default function Leaderboard() {
 			<div className="border-4 border-stone-800 bg-slate-100 p-6 shadow-[6px_6px_0px_theme(colors.stone.800)]">
 				{isLoading ? (
 					<Loader text="Loading scores..." />
+				) : data[timePeriod].length === 0 ? (
+					<div className="py-8 text-center text-stone-600 text-xl">
+						No puzzles have been solved {timePeriodData?.description}.
+					</div>
 				) : (
 					<div className="space-y-4">
 						{data[timePeriod].map((entry, index) => (
