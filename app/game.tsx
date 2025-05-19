@@ -15,6 +15,12 @@ export default function Game() {
 		trpc.danagram.getDailyState.queryOptions(),
 	);
 
+	const successfulGuess = gameState.data.guessesMade.find(
+		(guess) => guess.score > 0,
+	);
+
+	const hasCompletedToday = !!successfulGuess;
+
 	const [guess, setGuess] = useState("");
 
 	const submitGuessMutation = useMutation(
@@ -25,6 +31,7 @@ export default function Game() {
 			},
 			onSuccess: () => {
 				setGuess("");
+
 				queryClient.invalidateQueries({
 					queryKey: trpc.danagram.getDailyState.queryKey(),
 				});
@@ -35,7 +42,9 @@ export default function Game() {
 	return (
 		<main className="container mx-auto max-w-4xl px-4 py-8">
 			<div className="border-4 border-stone-800 bg-slate-100 p-6 shadow-[6px_6px_0px_theme(colors.stone.800)]">
-				<p className="mb-4 text-stone-600 text-xl">Unscramble the letters:</p>
+				<p className="mb-4 text-stone-600 text-xl">
+					{hasCompletedToday ? "Today's Danagram:" : "Unscramble the letters:"}
+				</p>
 				<div className="mb-6 flex justify-center space-x-2 sm:space-x-3">
 					{gameState.data.anagram.split("").map((letter, index) => (
 						<div
@@ -47,30 +56,44 @@ export default function Game() {
 						</div>
 					))}
 				</div>
-				<div>
-					<label
-						htmlFor="anagram-guess"
-						className="mb-2 block text-xl sm:text-2xl"
-					>
-						Your Guess:
-					</label>
-					<Input
-						type="text"
-						id="anagram-guess"
-						placeholder="Enter your solution"
-						className="mb-4"
-						value={guess}
-						onChange={(e) => setGuess(e.target.value)}
-					/>
-					<Button
-						variant="primary"
-						size="full"
-						disabled={submitGuessMutation.isPending}
-						onClick={() => submitGuessMutation.mutate({ guess })}
-					>
-						Submit Guess
-					</Button>
-				</div>
+				{hasCompletedToday ? (
+					<div className="text-center">
+						<p className="mb-2 font-bold text-2xl text-lime-600">
+							You solved today's Danagram!
+						</p>
+						<p className="mb-2 text-stone-600 text-xl">
+							Score: <span className="font-bold">{successfulGuess?.score}</span>
+						</p>
+						<p className="text-stone-600 text-xl">
+							Come back tomorrow for a new puzzle.
+						</p>
+					</div>
+				) : (
+					<div>
+						<label
+							htmlFor="anagram-guess"
+							className="mb-2 block text-xl sm:text-2xl"
+						>
+							Your Guess:
+						</label>
+						<Input
+							type="text"
+							id="anagram-guess"
+							placeholder="Enter your solution"
+							className="mb-4"
+							value={guess}
+							onChange={(e) => setGuess(e.target.value)}
+						/>
+						<Button
+							variant="primary"
+							size="full"
+							disabled={submitGuessMutation.isPending}
+							onClick={() => submitGuessMutation.mutate({ guess })}
+						>
+							Submit Guess
+						</Button>
+					</div>
+				)}
 			</div>
 
 			<div className="mt-10 border-4 border-stone-800 bg-slate-100 p-6 shadow-[6px_6px_0px_theme(colors.stone.800)]">
@@ -78,8 +101,15 @@ export default function Game() {
 				<div className="space-y-2">
 					{gameState.data.guessesMade.length > 0 ? (
 						gameState.data.guessesMade.map((guess) => (
-							<p key={guess.id} className="text-rose-500 text-xl">
-								✗ {guess.guess}
+							<p
+								key={guess.id}
+								className={
+									guess.score > 0
+										? "text-lime-600 text-xl"
+										: "text-rose-500 text-xl"
+								}
+							>
+								{guess.score > 0 ? "✓" : "✗"} {guess.guess}
 							</p>
 						))
 					) : (
@@ -97,10 +127,19 @@ export default function Game() {
 					</span>
 				</p>
 				<p className="text-xl">
-					Maximum Possible Score:{" "}
-					<span className="text-rose-500">
-						{gameState.data.highestPossibleScore}
-					</span>
+					{hasCompletedToday ? (
+						<>
+							Your Score:{" "}
+							<span className="text-lime-600">{successfulGuess?.score}</span>
+						</>
+					) : (
+						<>
+							Maximum Possible Score:{" "}
+							<span className="text-rose-500">
+								{gameState.data.highestPossibleScore}
+							</span>
+						</>
+					)}
 				</p>
 				<div className="mt-6">
 					<Button variant="primary" asChild>

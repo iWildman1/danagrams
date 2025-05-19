@@ -16,6 +16,8 @@ const buttonVariants = cva(
 					"bg-transparent hover:bg-slate-200 text-stone-800 hover:text-lime-700 active:translate-y-[2px] active:translate-x-[2px]",
 				small:
 					"text-lg border-2 shadow-[2px_2px_0px_theme(colors.stone.800)] hover:shadow-[1px_1px_0px_theme(colors.stone.800)] hover:translate-x-[1px] hover:translate-y-[1px] active:shadow-none active:translate-x-[2px] active:translate-y-[2px]",
+				inverted:
+					"bg-white text-stone-800 border-stone-800 shadow-[4px_4px_0px_theme(colors.stone.800)] hover:bg-stone-100 hover:text-lime-700 hover:shadow-[2px_2px_0px_theme(colors.stone.800)] hover:translate-x-[2px] hover:translate-y-[2px] active:shadow-[1px_1px_0px_theme(colors.stone.800)] active:translate-x-[3px] active:translate-y-[3px]",
 			},
 			size: {
 				default: "py-3 px-6 w-full sm:w-auto",
